@@ -4,6 +4,7 @@
   "description": "Node Server Testing Challenge",
   "main": "server.js",
   "scripts": {
+    "test": "jest --verbose --watch",
     "server": "nodemon index.js",
     "start": "node index.js"
   },

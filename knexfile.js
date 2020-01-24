@@ -6,4 +6,14 @@ module.exports = {
       filename: './characters.sqlite3'
     }
   },
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './test.db3',
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './migrations',
+    }
+  },
 };
