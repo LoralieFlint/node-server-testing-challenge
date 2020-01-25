@@ -8,9 +8,9 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/character', characters);
+server.use('/', characters);
 
-  server.get("/", (req, res) => {
+  server.get("/api", (req, res) => {
     res.send("server up and running");
   });
 

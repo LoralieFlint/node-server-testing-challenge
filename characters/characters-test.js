@@ -3,16 +3,22 @@ const supertest = require("sqlite3");
 const server = require("../index");
 
 const db = require("../data/db-config");
+const chars = require("./character-model")
 
-beforeEach(async () => {
-  await db.seed.run()
+
+// beforeEach(async () => {
+//   await db.seed.run()
+// })
+
+describe("create a user route to make a new character", () => {
+  it("add new user", async () => { 
+  await db("characters").truncate()
+  const newCharacter = await chars.insert({
+    name: "Harry Potter",
+    house: "Gryfendor"
+  });
+
+  const character = await db("characters");
+  expect(character).toHaveLength(1);
 })
-
-test("create a user route to make a new character", async () => {
-  const res = await supertest(server)
-    .post("/char")
-    .send({ name: "Harry Potter", house: "Gryfendor" })
-  expect(res.status).toBe(201)
-  expect(res.type).toBe("application/json")
-  expect(res.body).toEqual({ id: 1, username: "Harry Potter" })
 })
