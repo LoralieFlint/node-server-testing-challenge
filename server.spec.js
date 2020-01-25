@@ -1,6 +1,3 @@
-const request = require("supertest");
-const server = require("./server.js");
-
 const db = require("./data/db-config");
 const chars = require("./characters/character-model");
 
@@ -16,9 +13,27 @@ describe("create a user route to make a new character", () => {
     const newCharacter = await chars.insert({
       name: "Harry Potter",
       house: "Gryfendor"
-    });
+    })
+    const newCharacter2 = await chars.insert({
+      name: "Hermione Granger",
+      house: "Gryfendor"
+    })
+    const newCharacter3 = await chars.insert({
+      name: "Ron Weasley",
+      house: "Gryfendor"
+    })
 
     const character = await db("characters");
-    expect(character).toHaveLength(1);
+    expect(character).toHaveLength(3);
   });
 });
+
+describe("it should delete a character", () => {
+  it("deletes a character", async () => {
+    await db("characters").truncate()
+    const delchar = await chars.remove(1)
+        expect(delchar).toHaveLength(2)
+
+  })
+})
+//     
