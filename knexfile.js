@@ -6,7 +6,6 @@ module.exports = {
       filename: "./characters.sqlite3"
     }
   },
-  useNullAsDefault: true,
   migrations: {
     directory: "./migrations"
   }
